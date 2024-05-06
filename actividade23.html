@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     
+<script>
+
+// Função para verificar se o código da primeira porta está correto
+function verificarPrimeiraPorta(codigo) {
+    // Verifica se o código tem 4 dígitos e se é par
+    return codigo.length === 4 && parseInt(codigo) % 2 === 0;
+}
+
+// Função para verificar se o código da segunda porta está correto
+function verificarSegundaPorta(codigo) {
+    // Verifica se os caracteres estão em ordem alfabética
+    return codigo.split('').sort().join('') === codigo;
+}
+
+// Função para verificar se o código da terceira porta está correto
+function verificarTerceiraPorta(codigo) {
+    // Verifica se o código tem 6 caracteres, com pelo menos 2 dígitos e 2 letras
+    const digitos = codigo.replace(/[^0-9]/g, '').length;
+    const letras = codigo.replace(/[^a-zA-Z]/g, '').length;
+    return codigo.length === 6 && digitos >= 2 && letras >= 2;
+}
+
+// Função principal
+function main() {
+    // Solicita os códigos para cada porta
+    const codigoPorta1 = prompt("Digite o código para a primeira porta (um número par de 4 dígitos): ");
+    const codigoPorta2 = prompt("Digite o código para a segunda porta (uma sequência de caracteres em ordem alfabética): ");
+    const codigoPorta3 = prompt("Digite o código para a terceira porta (um código alfanumérico de 6 caracteres com pelo menos dois números e duas letras): ");
+
+    // Verifica se os códigos estão corretos para cada porta
+    if (verificarPrimeiraPorta(codigoPorta1) && verificarSegundaPorta(codigoPorta2) && verificarTerceiraPorta(codigoPorta3)) {
+        alert("Acesso concedido! Todas as portas foram abertas corretamente.");
+    } else {
+        alert("Acesso negado! Pelo menos uma das portas não foi aberta corretamente.");
+    }
+}
+
+// Chama a função principal ao carregar a página
+main();
+
+</script>
+
+</body>
+</html>
